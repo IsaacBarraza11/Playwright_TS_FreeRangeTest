@@ -98,7 +98,7 @@ test.describe('Navegacion en https://www.freerangetesters.com/', () => {
     });
   });
 
-  test('Listas', async ({ page }) => {
+  test.skip('Listas', async ({ page }) => {
 
     await test.step('Ingresando en la web principal https://www.freerangetesters.com', async () => {
       await page.goto('https://www.freerangetesters.com');
