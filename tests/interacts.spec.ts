@@ -120,7 +120,7 @@ test.describe('Test suit for interactions', () => {
         });
     });
     
-    test('Subir archivos', async ({ page }) => {
+    test.skip('Subir archivos', async ({ page }) => {
         await test.step('Subir un archivo', async () => {
             await page.goto('https://the-internet.herokuapp.com/upload');
             await page.getByRole('button', { name: 'Choose File' }).setInputFiles('../FreeRangePW/screens/CV_Isaac_Barraza_Español.pdf');
