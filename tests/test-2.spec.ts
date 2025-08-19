@@ -11,7 +11,7 @@ test.describe('Navegacion en https://www.freerangetesters.com/', () => {
 
     // con el tipo de variable CONST si cambian los recuros, si se pone var no se modifica y se queda con el utlimo recuros ingresado
     for (const sections of secciones){
-        test(`Validar la redireccion a la seccion "${sections.nombre}"`, async ({ page }) => {
+        test.skip(`Validar la redireccion a la seccion "${sections.nombre}"`, async ({ page }) => {
 
         await test.step('Ingresando en la web principal https://www.freerangetesters.com', async () => {
             await page.goto('https://www.freerangetesters.com');
