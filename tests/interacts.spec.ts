@@ -9,7 +9,7 @@ test.describe('Test suit for interactions', () => {
         await page.goto('https://thefreerangetester.github.io/sandbox-automation-testing/');
     });
 
-    test('Elemento Click', async ({ page }) => {
+    test('Elemento Click @Regression', async ({ page }) => {
         await test.step('click en boton', async () => {
             const buttonIdDinamico = page.getByRole('button', {name: 'Hacé click para generar'});
             await buttonIdDinamico.click();
@@ -24,7 +24,7 @@ test.describe('Test suit for interactions', () => {
         });
     });
 
-    test('Elemento Fill', async ({ page }) => {
+    test('Elemento Fill @Regression', async ({ page }) => {
         await test.step('Escribir sobre elementos', async () => {
             let textAburrido = page.getByRole('textbox', { name: 'Un aburrido texto' });
             await expect(textAburrido).toBeEditable();
@@ -35,7 +35,7 @@ test.describe('Test suit for interactions', () => {
         });
     });
 
-    test('Elemento Checkboxes y Radio buttons', async ({ page }) => {
+    test('Elemento Checkboxes y Radio buttons @Regression', async ({ page }) => {
         
         const sandbox = new SandboxPage(page); // creacion de iteracion para sandbox POM
 
@@ -83,7 +83,7 @@ test.describe('Test suit for interactions', () => {
         
     });
 
-    test('Elemento Dropdown', async ({ page }) => {
+    test('Elemento Dropdown @Regression', async ({ page }) => {
         await test.step('Desplegar dropdown', async () => {
             let listValues = ['Fútbol', 'Basketball','Tennis','Seleccioná un deporte'];
             let dropDownDeportes = page.locator('#formBasicSelect');
@@ -110,7 +110,7 @@ test.describe('Test suit for interactions', () => {
         
     });
     
-    test('Elemento teclas', async ({ page }) => {
+    test('Elemento teclas @Smoke', async ({ page }) => {
         await test.step('Presionar teclas', async () => {
             await page.getByRole('textbox', { name: 'Un aburrido texto' }).fill(textoA);
             for (const a of textoA) {
@@ -128,7 +128,7 @@ test.describe('Test suit for interactions', () => {
         
     })
     
-    test('Tablas Estaticas', async ({ page }) => {
+    test('Tablas Estaticas @Smoke', async ({ page }) => {
         await test.step('Assertions con Tablas Estaticas', async () => {
             const valoresColumnaNombres = await page.$$eval('h2:has-text("Tabla estática") + table tbody tr td:nth-child(2)', elements => elements.map(element => element.textContent));
             const nombresEsperados = ['Messi', 'Ronaldo', 'Mbappe'];
@@ -138,7 +138,7 @@ test.describe('Test suit for interactions', () => {
         
     });
     
-    test('Tablas Dinamicas', async ({ page }) => {
+    test('Tablas Dinamicas @Smoke', async ({ page }) => {
         await test.step('Trabajando con tablas dinamicas', async () => {
             const valoresTablaDinamica = await page.$$eval('h2:has-text("Tabla dinámica") + table tbody tr td:nth-child(2)', elements => elements.map(element => element.textContent));
             console.log(valoresTablaDinamica);
@@ -153,7 +153,7 @@ test.describe('Test suit for interactions', () => {
         }); 
     });
     
-    test('SoftAssertions', async ({ page }) => {
+    test('SoftAssertions @Integration', async ({ page }) => {
         await test.step('Uso de las soft assertions', async () => {
             // el Soft nos permite continuar validando elementos sin detenerse si encuentra un error
             await expect.soft(page.getByRole('checkbox', { name: 'Helado 🍧' }), 'No se encontro Helado 🍧').toBeVisible();
@@ -165,7 +165,7 @@ test.describe('Test suit for interactions', () => {
         
     });
 
-    test('Validando dentro de Popup', async ({ page }) => {
+    test('Validando dentro de Popup @Integration', async ({ page }) => {
         await test.step('haciendo click en el boton de Popup', async () => {
             await page.getByRole('button', { name: 'Mostrar popup' }).click();
             await page.screenshot({path: 'screens/MostrarPupUp.png'});
